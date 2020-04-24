@@ -22,12 +22,14 @@ Network layer (REST via Retrofit)
 
 Что в репозитории:
 
-`ChatFragment` фрагмент, отрисовывающий чат.
+[ChatFragment](code/ChatFragment.kt) фрагмент, отрисовывающий чат.
 
-`ChatAdapter` адаптер RecyclerView чата.
+[ChatAdapter](code/ChatAdapter.kt) адаптер RecyclerView чата.
 
-`ChatViewModel` вью модель для фрагмента.
+[ChatViewModel](code/ChatViewModel.kt) вью модель для фрагмента.
 
-`ChatRepository` сущность для постраничнй загрузки сообщений с сервера + отвечает за кэширование.
+[ChatRepository](code/ChatRepositoryImpl.kt) сущность для постраничнй загрузки сообщений с сервера + отвечает за кэширование.
+
+[Разметка фрагмента](code/chat_fragment.xml)
 
 Чат простой, поддерживаются только текстовые сообщения, без редактирования. Обновление по сигналу с веб сокета. Три основних типа сообщений - пользовательские входящие и исходящие + системные сообщения.
