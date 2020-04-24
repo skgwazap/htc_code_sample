@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.someproject.app.features.chat.ui.ResizingAwareCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_fragment_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:context=".features.chat.ui.ChatFragment">
+
+    <LinearLayout
+        android:id="@+id/chat_input_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/chat_input_control_height"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/chat_input_text"
+            style="@style/BodyText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/ChatUI_input_placeholder"
+            android:includeFontPadding="false"
+            android:maxLines="4"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_60"
+            tools:text="Hallo, let's go somewhere!" />
+
+        <ImageButton
+            android:id="@+id/chat_send_button"
+            android:layout_width="@dimen/chat_input_control_height"
+            android:layout_height="@dimen/chat_input_control_height"
+            android:background="@null"
+            android:src="@drawable/ic_chat_send"
+            android:tint="@color/chat_send_tint" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_marginBottom="@dimen/expand_collapse_button_size"
+        android:background="@color/white"
+        android:elevation="8dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_collapseMode="pin"
+        app:navigationIcon="@drawable/ic_shevron_left"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:subtitleTextAppearance="@style/MicroText"
+        app:titleTextAppearance="@style/H4Text"
+        tools:subtitle="3 days left"
+        tools:title="Someone's birthday">
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/chat_header_updating"
+            style="@style/LoadingIndicatorStyle"
+            android:layout_width="@dimen/small_loading_indicator_size"
+            android:layout_height="@dimen/small_loading_indicator_size"
+            android:layout_gravity="start"
+            android:layout_marginStart="8dp"
+            android:padding="@dimen/small_loading_indicator_padding"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.someproject.uikit.view.images.MediaPreviewView
+            android:id="@+id/event_preview"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.someproject.chatting.ui.widget.ChatHeaderView
+        android:id="@+id/chat_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginBottom="@dimen/expand_collapse_button_size"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:paddingStart="16dp"
+        android:paddingTop="?android:attr/actionBarSize"
+        android:paddingEnd="16dp"
+        app:layout_behavior="com.someproject.chatting.ui.widget.ChatHeaderExpandBehavior" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginBottom="@dimen/chat_input_control_height"
+        android:background="@color/grey_10"
+        android:clipToPadding="false"
+        android:nestedScrollingEnabled="false"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        app:layout_behavior="com.someproject.chatting.ui.widget.ChatRecyclerBehavior"
+        tools:listitem="@layout/chat_item_text_message_incoming" />
+
+    <FrameLayout
+        android:id="@+id/chat_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/chat_input_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_container">
+
+        <TextView
+            android:id="@+id/chat_is_empty_message"
+            style="@style/MicroText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:gravity="center"
+            android:text="@string/ChatUI_chat_is_empty_message"
+            android:visibility="gone" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/LoadingIndicatorWithBackgroundStyle"
+            android:layout_width="@dimen/loading_indicator_with_background_size"
+            android:layout_height="@dimen/loading_indicator_with_background_size"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+</com.someproject.app.features.chat.ui.ResizingAwareCoordinatorLayout>
